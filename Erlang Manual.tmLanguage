@@ -9,7 +9,7 @@
     <key>name</key>
     <string>Erlang Manual</string>
     <key>firstLineMatch</key>
-    <string>^.*\(3erl\)</string>
+    <string>^.*Erlang\sModule\sDefinition</string>
     <key>foldingStartMarker</key>
     <string>[A-Z]+</string>
     <key>patterns</key>
@@ -24,7 +24,7 @@
                 </dict>
             </dict>
             <key>match</key>
-            <string>^(Ericsson|.*)\(3erl\)</string>
+            <string>^(Ericsson.*|.*Erlang\sModule\sDefinition.*)$</string>
             <key>name</key>
             <string>comment.line.end.erlyman</string>
         </dict>
