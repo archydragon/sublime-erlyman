@@ -1,0 +1,26 @@
+{
+    "schema_version": "1.2",
+    "packages": [
+        {
+            "name": "Erlyman",
+            "description": "Erlang manual pages navigation",
+            "author": "Mendor",
+            "homepage": "https://github.com/Mendor/sublime-erlyman",
+            "last_modified": "2013-07-11 21:12:00",
+            "platforms": {
+                "osx": [
+                    {
+                        "version": "0.8",
+                        "url": "https://nodeload.github.com/Mendor/sublime-erlyman/zip/master"
+                    }
+                ],
+                "linux": [
+                    {
+                        "version": "0.8",
+                        "url": "https://nodeload.github.com/Mendor/sublime-erlyman/zip/master"
+                    }
+                ],
+            }
+        }
+    ]
+}
