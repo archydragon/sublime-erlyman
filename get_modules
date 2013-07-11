@@ -1,0 +1,8 @@
+#!/usr/bin/env escript
+%%! -smp disable
+
+%% Get the list of available documented Erlang default modules
+main(_) ->
+    Modules = code:all_loaded(),
+    List = string:join([atom_to_list(Module) || {Module, Path} <- Modules, Path =/= preloaded], " "),
+    io:format("~s", [List]).

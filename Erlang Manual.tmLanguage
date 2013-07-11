@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>fileTypes</key>
+    <array>
+        <string>ERL_MAN</string>
+    </array>
+    <key>name</key>
+    <string>Erlang Manual</string>
+    <key>firstLineMatch</key>
+    <string>^.*\(3erl\)</string>
+    <key>foldingStartMarker</key>
+    <string>[A-Z]+</string>
+    <key>patterns</key>
+    <array>
+        <dict>
+            <key>captures</key>
+            <dict>
+                <key>1</key>
+                <dict>
+                    <key>name</key>
+                    <string>punctuation.definition.comment.erlyman</string>
+                </dict>
+            </dict>
+            <key>match</key>
+            <string>^(Ericsson|.*)\(3erl\)</string>
+            <key>name</key>
+            <string>comment.line.end.erlyman</string>
+        </dict>
+        <dict>
+            <key>begin</key>
+            <string>^([A-Z\s]+)$\n?</string>
+            <key>beginCaptures</key>
+            <dict>
+                <key>1</key>
+                <dict>
+                    <key>name</key>
+                    <string>storage.type.class.erlyman</string>
+                </dict>
+            </dict>
+            <key>end</key>
+            <string>\s*</string>
+        </dict>
+        <dict>
+            <key>begin</key>
+            <string>^\s{7}([a-z0-9_]+)\(([A-Za-z0-9_\s\,]*)</string>
+            <key>beginCaptures</key>
+            <dict>
+                <key>1</key>
+                <dict>
+                    <key>name</key>
+                    <string>entity.name.function.erlyman</string>
+                </dict>
+                <key>2</key>
+                <dict>
+                    <key>name</key>
+                    <string>variable.parameter.function.erlyman</string>
+                </dict>
+                <key>3</key>
+                <dict>
+                    <key>name</key>
+                    <string>punctuation.separator.parameters.erlyman</string>
+                </dict>
+            </dict>
+            <key>end</key>
+            <string>\)</string>
+            <key>name</key>
+            <string>entity.name.function.erlyman</string>
+        </dict>
+    </array>
+    <key>scopeName</key>
+    <string>source.erl_man</string>
+    <key>uuid</key>
+    <string>1a55c2a0-e9fa-11e2-91e2-0800200c9a66</string>
+</dict>
+</plist>
