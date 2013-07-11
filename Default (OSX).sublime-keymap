@@ -1,3 +1,4 @@
 [
     { "keys": ["f1"], "command": "erlyman_find"}
+    { "keys": ["ctrl+f1"], "command": "erlyman_context"}
 ]

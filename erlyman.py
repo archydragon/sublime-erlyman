@@ -19,22 +19,55 @@ class Erlyman_findCommand(sublime_plugin.WindowCommand):
         if item is -1:
             return
         manpage = MODULES[item]
-        self.render_page(manpage)
+        render_page(manpage, False)
 
-    def render_page(self, page_name):
-        man = self.window.new_file()
-        content_raw = os.popen("erl -man " + page_name).read()
-        r = re.compile('\[[0-9]*m')
-        content = r.sub('', filter(lambda x: x in string.printable, content_raw))
-        man.set_name("[MAN] " + page_name + " - Erlang")
-        e = man.begin_edit()
-        man.insert(e, 0, content)
-        man.end_edit(e)
-        man.set_read_only(True)
-        man.set_scratch(True)
-        home = man.text_point(0, 0)
-        man.sel().clear()
-        man.sel().add(sublime.Region(home))
-        man.show(home)
-        man.settings().set("tab_size", 32)
-        man.set_syntax_file("Packages/Erlyman/Erlang Manual.tmLanguage")
+class Erlyman_contextCommand(sublime_plugin.TextCommand):
+    """
+    Look for selected command in manual pages
+    """
+
+    def run(self, edit):
+        for region in self.view.sel():
+            word = self.view.word(region)
+            word_c = self.view.substr(word)
+            if word_c in MODULES:
+                end = word.end()
+                ch = self.view.substr(sublime.Region(end, end+1))
+                if ch == ':':
+                    fun = self.view.word(sublime.Region(end+1, end+1))
+                    fun_c = self.view.substr(fun)
+                    render_page(word_c, fun_c)
+            else:
+                begin = word.begin()
+                ch = self.view.substr(sublime.Region(begin-1, begin))
+                if ch == ':':
+                    mod = self.view.word(sublime.Region(begin-1, begin-1))
+                    mod_c = self.view.substr(mod)
+                    if mod_c in MODULES:
+                        render_page(mod_c, word_c)
+        return
+
+# ets:lookup(Data),
+
+def render_page(page_name, fun):
+    man = sublime.active_window().new_file()
+    content_raw = os.popen("erl -man " + page_name).read()
+    r = re.compile('\[[0-9]*m')
+    content = r.sub('', filter(lambda x: x in string.printable, content_raw))
+    man.set_name("[MAN] " + page_name + " - Erlang")
+    e = man.begin_edit()
+    man.insert(e, 0, content)
+    man.end_edit(e)
+    man.set_read_only(True)
+    man.set_scratch(True)
+    home = man.text_point(0, 0)
+    man.sel().clear()
+    man.sel().add(sublime.Region(home))
+    man.show(home)
+    man.settings().set("tab_size", 32)
+    man.set_syntax_file("Packages/Erlyman/Erlang Manual.tmLanguage")
+    if fun != False:
+        print fun
+        f = man.find("^\s{7}" + fun + "\(.*\)", 0)
+        man.show(f)
+        man.sel().add(f)

@@ -7,4 +7,6 @@ Should be installed to ``Packages/Erlyman`` directory inside your ST config dire
 
 Use F1 by default to list documented Erlang modules and Ctrl+R inside pages for quick function search.
 
+Use Alt+F1 (or Ctrl+F1 on MacOSX) when the text cursor is on function call for this function reference.
+
 Details coming soon.

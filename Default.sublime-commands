@@ -2,5 +2,9 @@
     {
         "caption": "Erlyman: Find",
         "command": "erlyman_find"
+    },
+    {
+        "caption": "Erlyman: Context search",
+        "command": "erlyman_context"
     }
 ]
