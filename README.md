@@ -1,7 +1,9 @@
 sublime-erlyman
 ===============
 
-Erlang manual pages navigation plugin for Sublime Text.
+Erlang manual pages navigation plugin for Sublime Text, currently in beta.
+
+Works only on Linux and MacOSX due to official Erlang ``-man`` key limitation.
 
 Should be installed to ``Packages/Erlyman`` directory inside your ST config directory (e.g. ``~/.config/sublimt-text-2`` in Linux by default).
 
