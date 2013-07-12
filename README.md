@@ -1,14 +1,41 @@
-sublime-erlyman
-===============
+Erlyman
+=======
 
 Erlang manual pages navigation plugin for Sublime Text, currently in beta.
 
-Works only on Linux and MacOSX due to official Erlang ``-man`` key limitation.
+Requirements
+------------
 
-Should be installed to ``Packages/Erlyman`` directory inside your ST config directory (e.g. ``~/.config/sublimt-text-2`` in Linux by default).
+* Linux or MacOS X as operating system
+* installed Erlang distribution with man pages
 
-Use F1 by default to list documented Erlang modules and Ctrl+R inside pages for quick function search.
+Installation
+------------
 
-Use Alt+F1 (or Ctrl+F1 on MacOSX) when the text cursor is on function call for this function reference.
+Manual:
+```
+cd /path/to/sublime-text-2/Packages
+git clone https://github.com/Mendor/sublime-erlyman.git Erlyman
+```
 
-Details coming soon.
+Or use [Package Control](http://wbond.net/sublime_packages/package_control).
+
+Usage
+-----
+
+Default key bidgings:
+
+* ``F1`` anywhere — show list of manual pages;
+* ``Alt+F1`` (or ``Ctrl+F1`` for MacOS X) on function name — search this function in manual pages.
+
+You may use ``Ctrl+R`` inside manual page view to navigate page sections, type and function definitions.
+
+Screenshot
+----------
+
+![screen](https://raw.github.com/Mendor/sublime-erlyman/screen.png)
+
+License
+-------
+
+[WTFPL](http://sam.zoy.org/wtfpl/)
