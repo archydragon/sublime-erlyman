@@ -33,7 +33,7 @@ You may use ``Ctrl+R`` inside manual page view to navigate page sections, type a
 Screenshot
 ----------
 
-![screen](https://raw.github.com/Mendor/sublime-erlyman/screen.png)
+![screen](https://raw.github.com/Mendor/sublime-erlyman/master/screen.png)
 
 License
 -------
