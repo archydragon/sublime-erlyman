@@ -5,7 +5,7 @@ import string
 import re
 
 # On mofule load:
-MODULES = os.popen(os.getcwd() + "/get_modules").read().split()
+MODULES = ["erlang"] + os.popen(os.getcwd() + "/get_modules").read().split()
 
 class Erlyman_findCommand(sublime_plugin.WindowCommand):
     """
@@ -45,15 +45,18 @@ class Erlyman_contextCommand(sublime_plugin.TextCommand):
                     mod_c = self.view.substr(mod)
                     if mod_c in MODULES:
                         render_page(mod_c, word_c)
+                    else:
+                        sublime.status_message("There is no manual page for '" + mod_c +"' module.")
+                else:
+                    if string.find(man_read("erlang"), "       " + word_c + "(") != -1:
+                        render_page("erlang", word_c)
+                    else:
+                        sublime.status_message("There is no BIF named '" + word_c +"'.")
         return
-
-# ets:lookup(Data),
 
 def render_page(page_name, fun):
     man = sublime.active_window().new_file()
-    content_raw = os.popen("erl -man " + page_name).read()
-    r = re.compile('\[[0-9]*m')
-    content = r.sub('', filter(lambda x: x in string.printable, content_raw))
+    content = man_read(page_name)
     man.set_name("[MAN] " + page_name + " - Erlang")
     e = man.begin_edit()
     man.insert(e, 0, content)
@@ -71,3 +74,8 @@ def render_page(page_name, fun):
         f = man.find("^\s{7}" + fun + "\(.*\)", 0)
         man.show(f)
         man.sel().add(f)
+
+def man_read(man_name):
+    content_raw = os.popen("erl -man " + man_name).read()
+    r = re.compile('\[[0-9]*m')
+    return r.sub('', filter(lambda x: x in string.printable, content_raw))
