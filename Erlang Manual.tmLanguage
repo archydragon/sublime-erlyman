@@ -30,13 +30,13 @@
         </dict>
         <dict>
             <key>begin</key>
-            <string>^([A-Z\s]+)$\n?</string>
+            <string>^([A-Z][A-Z ]+)</string>
             <key>beginCaptures</key>
             <dict>
                 <key>1</key>
                 <dict>
                     <key>name</key>
-                    <string>storage.type.class.erlyman</string>
+                    <string>entity.name.type.class.erlyman</string>
                 </dict>
             </dict>
             <key>end</key>
@@ -44,7 +44,7 @@
         </dict>
         <dict>
             <key>begin</key>
-            <string>^\s{7}([a-z0-9_]+)\(([A-Za-z0-9_\s\,]*)</string>
+            <string>^\s{7}([a-z0-9_\:]+)\(([A-Za-z0-9_\s\,\[\]]*)</string>
             <key>beginCaptures</key>
             <dict>
                 <key>1</key>
