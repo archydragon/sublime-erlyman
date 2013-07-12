@@ -11,13 +11,13 @@
                 "osx": [
                     {
                         "version": "0.8",
-                        "url": "https://nodeload.github.com/Mendor/sublime-erlyman/zip/master"
+                        "url": "https://nodeload.github.com/Mendor/sublime-erlyman/zip/0.8"
                     }
                 ],
                 "linux": [
                     {
                         "version": "0.8",
-                        "url": "https://nodeload.github.com/Mendor/sublime-erlyman/zip/master"
+                        "url": "https://nodeload.github.com/Mendor/sublime-erlyman/zip/0.8"
                     }
                 ]
             }
