@@ -5,7 +5,7 @@ import string
 import re
 
 # On mofule load:
-MODULES = ["erlang"] + os.popen(os.getcwd() + "/get_modules").read().split()
+MODULES = os.popen(os.getcwd() + "/get_modules").read().split("\n")
 
 class Erlyman_findCommand(sublime_plugin.WindowCommand):
     """

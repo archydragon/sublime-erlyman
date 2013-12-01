@@ -30,6 +30,12 @@ Default key bidgings:
 
 You may use ``Ctrl+R`` inside manual page view to navigate page sections, type and function definitions.
 
+#### What to do if the list is empty:
+
+  * If you're using Debian, Ubuntu or any other .deb-based Linux distribution, make sure that you've installed ``erlang-manpages`` package.
+  * If you're using any other Linux distribution, please open an issue (or if you're too lazy for it, you may update 8th line of ``get_modules`` script with correct Erlang manpages path :D).
+  * If you're using MacOS X and don't use Homebrew for Erlang installation, edit 15th line of ``get_modules`` script or open an issue (I have no environment to test it just now, sorry).
+
 Screenshot
 ----------
 

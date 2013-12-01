@@ -1,8 +1,17 @@
-#!/usr/bin/env escript
-%%! -smp disable
+#!/bin/bash
 
-%% Get the list of available documented Erlang default modules
-main(_) ->
-    Modules = code:all_loaded(),
-    List = string:join([atom_to_list(Module) || {Module, Path} <- Modules, Path =/= preloaded], " "),
-    io:format("~s", [List]).
+OS=`uname -s`
+
+if [[ $OS == "Linux" ]]; then
+    TRYGREP=`man -k . | grep 3erl | awk '{print \$1}'`
+    if [[ -z "$TRYGREP" ]]; then
+        MANPATH="/usr/lib64/erlang/man"
+        find $MANPATH/man*/ -type f -exec basename {} \; | awk -F'.' '{print $1}' | sort
+    else
+        echo "$TRYGREP"
+    fi
+elif [[ $OS == "Darwin" ]]; then
+    OTP=`erl -eval 'erlang:display(erlang:system_info(otp_release)), halt().'  -noshell` | cut -d "\"" -f 2
+    MANPATH="/usr/local/Cellar/erlang/$OTP/lib/erlang/man"
+    find $MANPATH/man*/ -type f -exec basename {} \; | awk -F'.' '{print $1}' | sort
+fi
