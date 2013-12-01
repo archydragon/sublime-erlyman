@@ -56,7 +56,7 @@ class Erlyman_contextCommand(sublime_plugin.TextCommand):
 
 def render_page(page_name, fun):
     man = sublime.active_window().new_file()
-    content = man_read(page_name)
+    content = ''.join([x for x in man_read(page_name) if x in string.printable])
     man.set_name("[MAN] " + page_name + " - Erlang")
     e = man.begin_edit()
     man.insert(e, 0, content)
@@ -76,6 +76,6 @@ def render_page(page_name, fun):
         man.sel().add(f)
 
 def man_read(man_name):
-    content_raw = os.popen("erl -man " + man_name).read()
+    content_raw = os.popen("erl -man " + man_name + " | col -b").read()
     r = re.compile('\[[0-9]*m')
     return r.sub('', filter(lambda x: x in string.printable, content_raw))
