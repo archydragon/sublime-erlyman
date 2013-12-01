@@ -6,18 +6,18 @@
             "description": "Erlang manual pages navigation",
             "author": "Mendor",
             "homepage": "https://github.com/Mendor/sublime-erlyman",
-            "last_modified": "2013-07-12 20:31:00",
+            "last_modified": "2013-12-02 00:12:00",
             "platforms": {
                 "osx": [
                     {
-                        "version": "0.12",
-                        "url": "https://nodeload.github.com/Mendor/sublime-erlyman/zip/0.12"
+                        "version": "0.13",
+                        "url": "https://nodeload.github.com/Mendor/sublime-erlyman/zip/0.13"
                     }
                 ],
                 "linux": [
                     {
-                        "version": "0.12",
-                        "url": "https://nodeload.github.com/Mendor/sublime-erlyman/zip/0.12"
+                        "version": "0.13",
+                        "url": "https://nodeload.github.com/Mendor/sublime-erlyman/zip/0.13"
                     }
                 ]
             }
