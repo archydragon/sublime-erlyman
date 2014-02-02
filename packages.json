@@ -10,14 +10,14 @@
             "platforms": {
                 "osx": [
                     {
-                        "version": "0.13",
-                        "url": "https://nodeload.github.com/Mendor/sublime-erlyman/zip/0.13"
+                        "version": "0.14",
+                        "url": "https://nodeload.github.com/Mendor/sublime-erlyman/zip/0.14"
                     }
                 ],
                 "linux": [
                     {
-                        "version": "0.13",
-                        "url": "https://nodeload.github.com/Mendor/sublime-erlyman/zip/0.13"
+                        "version": "0.14",
+                        "url": "https://nodeload.github.com/Mendor/sublime-erlyman/zip/0.14"
                     }
                 ]
             }
