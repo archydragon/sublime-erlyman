@@ -5,7 +5,11 @@ import string
 import re
 
 # On mofule load:
-MODULES = os.popen(os.getcwd() + "/get_modules").read().split("\n")
+MODULES = os.popen(sublime.packages_path() + "/Erlyman/get_modules").read().split("\n")
+
+class InsertviewCommand(sublime_plugin.TextCommand):
+    def run(self, edit, pos, text):
+        self.view.insert(edit, pos, text)
 
 class Erlyman_findCommand(sublime_plugin.WindowCommand):
     """
@@ -49,18 +53,16 @@ class Erlyman_contextCommand(sublime_plugin.TextCommand):
                         sublime.status_message("There is no manual page for '" + mod_c +"' module.")
                 else:
                     if string.find(man_read("erlang"), "       " + word_c + "(") != -1:
-                        render_page("erlang", word_c)
+                        render_page("erlang", edit, word_c)
                     else:
                         sublime.status_message("There is no BIF named '" + word_c +"'.")
         return
 
 def render_page(page_name, fun):
     man = sublime.active_window().new_file()
-    content = man_read(page_name)
+    content = re.sub(r'\t', r'    ', man_read(page_name))
     man.set_name("[MAN] " + page_name + " - Erlang")
-    e = man.begin_edit()
-    man.insert(e, 0, content)
-    man.end_edit(e)
+    man.run_command('insertview', {'pos': 0, 'text': content})
     man.set_read_only(True)
     man.set_scratch(True)
     home = man.text_point(0, 0)
@@ -70,7 +72,7 @@ def render_page(page_name, fun):
     man.settings().set("tab_size", 32)
     man.set_syntax_file("Packages/Erlyman/Erlang Manual.tmLanguage")
     if fun != False:
-        print fun
+        # print fun
         f = man.find("^\s{7}" + fun + "\(.*\)", 0)
         man.show(f)
         man.sel().add(f)
@@ -78,4 +80,4 @@ def render_page(page_name, fun):
 def man_read(man_name):
     content_raw = os.popen("erl -man " + man_name + " | col -b").read()
     r = re.compile('\[[0-9]*m')
-    return r.sub('', filter(lambda x: x in string.printable, content_raw))
+    return r.sub('', ''.join(filter(lambda x: x in string.printable, content_raw)))
