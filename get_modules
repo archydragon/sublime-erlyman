@@ -5,8 +5,13 @@ OS=`uname -s`
 if [[ $OS == "Linux" ]]; then
     TRYGREP=`man -k . | grep 3erl | awk '{print \$1}'`
     if [[ -z "$TRYGREP" ]]; then
-        MANPATH="/usr/lib64/erlang/man"
-        find $MANPATH/man*/ -type f -exec basename {} \; | awk -F'.' '{print $1}' | sort
+        MANPATHS=("/usr/lib64/erlang/man" "/usr/local/lib/erlang/man")
+        for M in "${MANPATHS[@]}"
+        do
+            if [ -d $M ]; then
+                find $M/man*/ -type f -exec basename {} \; | awk -F'.' '{print $1}' | sort
+            fi
+        done
     else
         echo "$TRYGREP"
     fi
