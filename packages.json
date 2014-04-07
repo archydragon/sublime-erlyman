@@ -7,16 +7,14 @@
             "author": "Mendor",
             "homepage": "https://github.com/Mendor/sublime-erlyman",
             "issues": "https://github.com/Mendor/sublime-erlyman/issues",
-            "last_modified": "2014-03-30 22:54:00",
             "readme": "https://raw.githubusercontent.com/Mendor/sublime-erlyman/master/README.md",
             "labels": ["documentation"],
             "releases": [
                 {
-                    "version": "0.18",
+                    "version": "0.19",
                     "sublime_text": "*",
-                    "details": "https://github.com/Mendor/sublime-erlyman",
                     "platforms": ["osx", "linux"],
-                    "url": "https://nodeload.github.com/Mendor/sublime-erlyman/zip/0.18"
+                    "url": "https://nodeload.github.com/Mendor/sublime-erlyman/zip/0.19"
                 }
             ]
         }
