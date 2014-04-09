@@ -5,17 +5,17 @@
             "name": "Erlyman",
             "description": "Erlang manual pages navigation",
             "author": "Mendor",
-            "last_modified": "2014-04-08 05:21:00",
-            "homepage": "https://github.com/Mendor/sublime-erlyman",
-            "issues": "https://github.com/Mendor/sublime-erlyman/issues",
+            "last_modified": "2014-04-09 08:31:00",
+            "details": "https://github.com/Mendor/sublime-erlyman",
             "readme": "https://raw.githubusercontent.com/Mendor/sublime-erlyman/master/README.md",
             "labels": ["documentation"],
             "releases": [
                 {
-                    "version": "0.19",
+                    "version": "0.20",
                     "sublime_text": "*",
                     "platforms": ["osx", "linux"],
-                    "url": "https://nodeload.github.com/Mendor/sublime-erlyman/zip/0.19"
+                    "details": "https://github.com/Mendor/sublime-erlyman/tree/master",
+                    "url": "https://nodeload.github.com/Mendor/sublime-erlyman/zip/0.20"
                 }
             ]
         }
