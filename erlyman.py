@@ -52,8 +52,8 @@ class Erlyman_contextCommand(sublime_plugin.TextCommand):
                     else:
                         sublime.status_message("There is no manual page for '" + mod_c +"' module.")
                 else:
-                    if string.find(man_read("erlang"), "       " + word_c + "(") != -1:
-                        render_page("erlang", edit, word_c)
+                    if man_read("erlang").find("       " + word_c + "(") != -1:
+                        render_page("erlang", word_c)
                     else:
                         sublime.status_message("There is no BIF named '" + word_c +"'.")
         return
