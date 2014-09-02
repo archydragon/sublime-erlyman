@@ -5,7 +5,7 @@ import string
 import re
 
 # On mofule load:
-MODULES = os.popen("bash " + sublime.packages_path() + "/Erlyman/get_modules").read().split("\n")
+MODULES = os.popen("bash \"" + sublime.packages_path() + "/Erlyman/get_modules\"").read().split("\n")
 
 class InsertviewCommand(sublime_plugin.TextCommand):
     def run(self, edit, pos, text):
