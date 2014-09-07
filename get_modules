@@ -5,7 +5,8 @@ OS=`uname -s`
 if [[ $OS == "Linux" ]]; then
     TRYGREP=`man -k . | grep 3erl | awk '{print \$1}'`
     if [[ -z "$TRYGREP" ]]; then
-        MANPATHS=("/usr/lib64/erlang/man" "/usr/local/lib/erlang/man")
+        KERLPATH=`kerl active | sed -e 's/^[^/].*$//' -e '/^$/d'`
+        MANPATHS=("/usr/lib64/erlang/man" "/usr/local/lib/erlang/man" "$KERLPATH/man")
         for M in "${MANPATHS[@]}"
         do
             if [ -d $M ]; then
