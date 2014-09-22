@@ -4,8 +4,26 @@ import os.path
 import string
 import re
 
+def get_modules():
+    trygrep = os.popen("man -k . | grep 3erl | awk '{print $1}'").read()
+    if trygrep:
+        return trygrep.splilt("\n")
+    kerlpath = os.popen("kerl active | sed -e 's/^[^/].*$//' -e '/^$/d'").read()
+    manpaths = [
+        "/usr/lib64/erlang/man",
+        "/usr/local/lib/erlang/man",
+        kerlpath + "/man"
+    ]
+    for p in manpaths:
+        if os.path.isdir(p):
+            mans = []
+            for root, dirs, files in os.walk(p):
+                mans += files
+            return [f.split('.')[0] for f in mans]
+    return ['']
+
 # On mofule load:
-MODULES = os.popen("bash \"" + sublime.packages_path() + "/Erlyman/get_modules\"").read().split("\n")
+MODULES = get_modules()
 
 class InsertviewCommand(sublime_plugin.TextCommand):
     def run(self, edit, pos, text):
