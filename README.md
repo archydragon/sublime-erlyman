@@ -26,14 +26,14 @@ Usage
 Default key bidgings:
 
 * ``F1`` anywhere — show list of manual pages;
-* ``Alt+F1`` (or ``Ctrl+F1`` for MacOS X) on function name — search this function in manual pages.
+* ``Alt+F1`` on function name — search this function in manual pages.
 
 You may use ``Ctrl+R`` inside manual page view to navigate page sections, type and function definitions.
 
 #### What to do if the list is empty:
 
   * If you're using Debian, Ubuntu or any other .deb-based Linux distribution, make sure that you've installed ``erlang-manpages`` package.
-  * If you're using any other Linux distribution, please open an issue (or if you're too lazy for it, you may update 8th line of ``get_modules`` script with correct Erlang manpages path :D).
+  * If you're using any other Linux distribution, please open an issue.
   * If you're using MacOS X and don't use Homebrew for Erlang installation, edit 15th line of ``get_modules`` script or open an issue (I have no environment to test it just now, sorry).
   * If you're using [kerl](https://github.com/yrashk/kerl) to manage Erlang installations, make sure that there is the line `KERL_INSTALL_MANPAGES=true` in your `~/.kerlrc`. In case of necessity rebuild your active installation with this tuning.
 
