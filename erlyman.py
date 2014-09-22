@@ -22,8 +22,15 @@ def get_modules():
             return [f.split('.')[0] for f in mans]
     return ['']
 
+def erl():
+    if not os.popen("which erl").read():
+        return "/usr/local/bin/erl"
+    else:
+        return "erl"
+
 # On mofule load:
 MODULES = get_modules()
+ERL = erl()
 
 class InsertviewCommand(sublime_plugin.TextCommand):
     def run(self, edit, pos, text):
@@ -96,6 +103,8 @@ def render_page(page_name, fun):
         man.sel().add(f)
 
 def man_read(man_name):
-    content_raw = os.popen("erl -man " + man_name + " | col -b").read()
+    content_raw = os.popen(ERL + " -man " + man_name + " | col -b").read()
+    # content_raw = os.popen("uptime").read()
+    # print(content_raw)
     r = re.compile('\[[0-9]*m')
     return r.sub('', ''.join(filter(lambda x: x in string.printable, content_raw)))
