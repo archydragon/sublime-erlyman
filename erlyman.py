@@ -28,7 +28,7 @@ def erl():
     else:
         return "erl"
 
-# On mofule load:
+# On module load:
 MODULES = get_modules()
 ERL = erl()
 
@@ -99,7 +99,7 @@ def render_page(page_name, fun):
     if fun != False:
         # print fun
         f = man.find("^\s{7}" + fun + "\(.*\)", 0)
-        man.show(f)
+        man.show_at_center(f)
         man.sel().add(f)
 
 def man_read(man_name):
