@@ -7,7 +7,7 @@ import re
 def get_modules():
     trygrep = os.popen("man -k . | grep 3erl | awk '{print $1}'").read()
     if trygrep:
-        return trygrep.splilt("\n")
+        return trygrep.split("\n")
     kerlpath = os.popen("kerl active | sed -e 's/^[^/].*$//' -e '/^$/d'").read()
     manpaths = [
         "/usr/lib64/erlang/man",
