@@ -8,12 +8,13 @@ def get_modules():
     trygrep = os.popen("man -k . | grep 3erl | awk '{print $1}'").read()
     if trygrep:
         return trygrep.split("\n")
-    kerlpath = os.popen("kerl active | sed -e 's/^[^/].*$//' -e '/^$/d'").read()
     manpaths = [
         "/usr/lib64/erlang/man",
-        "/usr/local/lib/erlang/man",
-        kerlpath + "/man"
+        "/usr/local/lib/erlang/man"
     ]
+    kerlpath = os.popen("kerl active | sed -e 's/^[^/].*$//' -e '/^$/d'").read().strip()
+    if kerlpath:
+        manpaths.append(kerlpath + "/man")
     for p in manpaths:
         if os.path.isdir(p):
             mans = []
